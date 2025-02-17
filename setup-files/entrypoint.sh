@@ -20,8 +20,8 @@ if [[ -v SQUEEZE ]]; then
     ./squeeze.sh
 fi
 
-mkdir /app/ledfx-config
+mkdir -p /app/ledfx-config
 
 mv -vn /app/config.yaml /app/ledfx-config/
-mkdir /root/.ledfx
+mkdir -p /root/.ledfx
 ledfx -c /app/ledfx-config 
