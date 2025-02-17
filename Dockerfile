@@ -47,4 +47,5 @@ RUN apt-get install -fy ./snapclient.deb
 COPY setup-files/ /app/
 RUN chmod a+wrx /app/*
 
-ENTRYPOINT ./entrypoint.sh
+ENTRYPOINT ["bash", "-c"]
+CMD ["./entrypoint.sh"]
