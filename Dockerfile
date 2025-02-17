@@ -39,6 +39,10 @@ RUN apt-get install -y wget \
 
 RUN apt-get install -y squeezelite 
 
+ARG TARGETPLATFORM
+RUN if [ "$TARGETPLATFORM" = "linux/arm/v7" ]; then ARCHITECTURE=armhf; elif [ "$TARGETPLATFORM" = "linux/arm64" ]; then ARCHITECTURE=armhf; else ARCHITECTURE=amd64; fi \
+    && lastversion download badaix/snapcast --format assets --filter "^snapclient_(?:(\d+)\.)?(?:(\d+)\.)?(?:(\d+)\-)?(?:(\d)(_$ARCHITECTURE_bookworm\.deb))$" -o snapclient.deb
+RUN apt-get install -fy ./snapclient.deb
 
 COPY setup-files/ /app/
 RUN chmod a+wrx /app/*
