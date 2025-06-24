@@ -1,0 +1,12 @@
+# .github/workflows/cleanup.yml
+name: Delete Untagged Container Versions
+
+on:
+  workflow_dispatch:
+
+jobs:
+  delete-container-versions:
+    uses: .github/workflows/delete-container-versions.yml
+    with:
+      package_name: 'your-docker-container-package-name'
+      package_type: 'container'
